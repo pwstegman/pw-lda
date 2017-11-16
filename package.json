@@ -1,0 +1,29 @@
+{
+  "name": "pw-lda",
+  "version": "1.0.0",
+  "description": "Linear discriminant analysis",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pwstegman/pw-lda.git"
+  },
+  "keywords": [
+    "Linear discriminant analysis",
+    "LDA",
+    "classification",
+    "machine learning"
+  ],
+  "author": "Pierce Stegman <pwstegman@gmail.com> (https://github.com/pwstegman/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pwstegman/pw-lda/issues"
+  },
+  "homepage": "https://github.com/pwstegman/pw-lda#readme",
+  "dependencies": {
+    "mathjs": "^3.16.5",
+    "pw-stat": "^1.0.0"
+  }
+}
