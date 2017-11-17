@@ -48,3 +48,7 @@ for(var i = 0; i < unknownPoints.length; i++){
 
 console.log(predictions); // [ -1, -1, -1, 1, 1, 1 ]
 ```
+
+## Documentation
+
+Documentation is available at [http://pwstegman.me/pw-lda/](http://pwstegman.me/pw-lda/)
