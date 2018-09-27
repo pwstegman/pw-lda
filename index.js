@@ -12,11 +12,11 @@ var stat = require('pw-stat');
  * @param {number[][]} class2 - Data set for class 2, rows are samples, columns are variables
  */
 function LDA(class1, class2) {
-	var mu1 = math.transpose(stat.mean(class1));
-	var mu2 = math.transpose(stat.mean(class2));
-	var pooledCov = math.add(stat.cov(class1), stat.cov(class2));
-	theta = math.multiply(math.inv(pooledCov), math.subtract(mu2, mu1));
-	b = math.multiply(-1, math.transpose(theta), math.add(mu1, mu2), 1 / 2);
+	let mu1 = math.transpose(stat.mean(class1));
+	let mu2 = math.transpose(stat.mean(class2));
+	let pooledCov = math.add(stat.cov(class1), stat.cov(class2));
+	let theta = math.multiply(math.inv(pooledCov), math.subtract(mu2, mu1));
+	let b = math.multiply(-1, math.transpose(theta), math.add(mu1, mu2), 1 / 2);
 
 	this.theta = theta;
 	this.b = b;
