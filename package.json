@@ -1,10 +1,11 @@
 {
   "name": "pw-lda",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "Linear discriminant analysis",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "docs": "jsdoc index.js -t node_modules/postman-jsdoc-theme -d docs -R README.md"
   },
   "repository": {
     "type": "git",
@@ -25,5 +26,8 @@
   "dependencies": {
     "mathjs": "^3.20.2",
     "pw-stat": "^1.0.1"
+  },
+  "devDependencies": {
+    "postman-jsdoc-theme": "0.0.3"
   }
 }

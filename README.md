@@ -9,28 +9,32 @@ npm install pw-lda
 
 ## Getting Started
 
-Two-dimensions are used in the below example, but any number of dimensions may be used. The returned projection will be less than 0 for class 1, equal to 0 if exactly inbetween, and greater than 0 for class 2.
+Two-dimensions are used in the below example, but any number of dimensions may be used.
+
+LDA support both binary and multiclass classification. For multiclass classification, a pairwise voting system is used to extend the binary classifier to multiclass.
 
 ```javascript
-var LDA = require('pw-lda');
+const LDA = require('pw-lda');
 
-var class1 = [
+// Example with 2 classes
+
+let class1 = [
 	[0, 0],
 	[1, 2],
 	[2, 2],
 	[1.5, 0.5]
 ];
 
-var class2 = [
+let class2 = [
 	[8, 8],
 	[9, 10],
 	[7, 8],
 	[9, 9]
 ];
 
-var classifier = new LDA(class1, class2);
+let classifier = new LDA(class1, class2);
 
-var unknownPoints = [
+let unknownPoints = [
 	[-1, 0],
 	[1.5, 2],
 	[3, 3],
@@ -39,14 +43,38 @@ var unknownPoints = [
 	[10, 12]
 ];
 
-var predictions = [];
+let predictions = [];
 
-for(var i = 0; i < unknownPoints.length; i++){
-	var projection = classifier.project(unknownPoints[i]);
-	predictions.push(Math.sign(projection));
+for(let i = 0; i < unknownPoints.length; i++){
+	predictions.push(classifier.classify(unknownPoints[i]));
 }
 
-console.log(predictions); // [ -1, -1, -1, 1, 1, 1 ]
+console.log(predictions); // [ 0, 0, 0, 1, 1, 1 ]
+
+// Extending to a multiclass example
+
+let class3 = [
+	[-1, 10],
+	[0, 12],
+	[1, 11],
+	[0.5, 9]
+];
+
+unknownPoints = unknownPoints.concat([
+	[0, 11],
+	[-1, 8],
+	[1, 9]
+]);
+
+classifier = new LDA(class1, class2, class3);
+
+predictions = [];
+
+for(let i = 0; i < unknownPoints.length; i++){
+	predictions.push(classifier.classify(unknownPoints[i]));
+}
+
+console.log(predictions); // [ 0, 0, 0, 1, 1, 1, 2, 2, 2 ]
 ```
 
 ## Documentation

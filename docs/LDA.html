@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>LDA - Documentation</title>
+    <title>LDA - Postman Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -23,7 +23,7 @@
 <label for="nav-trigger" class="overlay"></label>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="LDA.html">LDA</a><ul class='methods'><li data-type='method'><a href="LDA.html#project">project</a></li></ul></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="LDA.html">LDA</a><ul class='methods'><li data-type='method'><a href="LDA.html#classify">classify</a></li><li data-type='method'><a href="LDA.html#project">project</a></li></ul></li></ul>
 </nav>
 
 <div id="main">
@@ -54,7 +54,7 @@
 
     
 
-    <h4 class="name" id="LDA"><span class="type-signature"></span>new LDA<span class="signature">(class1, class2)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="LDA"><span class="type-signature"></span>new LDA<span class="signature">(&hellip;classes)</span><span class="type-signature"></span></h4>
 
     
 
@@ -85,6 +85,8 @@
         <th>Type</th>
 
         
+        <th>Attributes</th>
+        
 
         
 
@@ -97,7 +99,7 @@
 
         <tr>
             
-                <td class="name"><code>class1</code></td>
+                <td class="name"><code>classes</code></td>
             
 
             <td class="type">
@@ -110,33 +112,20 @@
             </td>
 
             
-
-            
-
-            <td class="description last">Data set for class 1, rows are samples, columns are variables</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>class2</code></td>
-            
-
-            <td class="type">
-            
+                <td class="attributes">
                 
-<span class="param-type">Array.&lt;Array.&lt;number>></span>
 
+                
+
+                
+                    &lt;repeatable><br>
+                
+                </td>
+            
 
             
-            </td>
 
-            
-
-            
-
-            <td class="description last">Data set for class 2, rows are samples, columns are variables</td>
+            <td class="description last">Each parameter is a 2d class array. In each class array, rows are samples, columns are variables.</td>
         </tr>
 
     
@@ -177,7 +166,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line10">line 10</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line15">line 15</a>
     </li></ul></dd>
     
 
@@ -200,6 +189,11 @@
 
 
 
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>let classifier = new LDA(class1, class2, class3);</code></pre>
 
 
 
@@ -226,14 +220,14 @@
 
     
 
-    <h4 class="name" id="project"><span class="type-signature"></span>project<span class="signature">(point)</span><span class="type-signature"> &rarr; {number}</span></h4>
+    <h4 class="name" id="classify"><span class="type-signature"></span>classify<span class="signature">(point)</span><span class="type-signature"> &rarr; {number}</span></h4>
 
     
 
 
 
 <div class="description">
-    Predict the class of an unknown data point.
+    Classify an unknown point. Uses a pairwise voting system in the event of multiclass classification.
 </div>
 
 
@@ -326,7 +320,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line26">line 26</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line79">line 79</a>
     </li></ul></dd>
     
 
@@ -353,7 +347,160 @@
 
         
 <div class="param-desc">
-    value less than 0 if predicted to be in class 1, 0 if exactly inbetween, greater than 0 if class 2
+    Returns the predicted class. Class numbers range from 0 to (number_of_classes - 1).
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">number</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="project"><span class="type-signature"></span>project<span class="signature">(point)</span><span class="type-signature"> &rarr; {number}</span></h4>
+
+    
+
+
+
+<div class="description">
+    Project the unknown data point to one dimension.Currently only supports binary LDA.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>point</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;number></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The data point to be projected.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line62">line 62</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    value less than 0 if predicted to be in class 1, 0 if exactly in between, greater than 0 if class 2
 </div>
 
 
@@ -392,7 +539,7 @@
 <br class="clear">
 
 <footer>
-    Documentation generated at Thu Nov 16 2017 22:29:59 GMT-0600 (Central Standard Time)
+    Documentation generated at Sun Feb 17 2019 01:51:05 GMT-0600 (Central Standard Time)
 </footer>
 
 <script>prettyPrint();</script>
